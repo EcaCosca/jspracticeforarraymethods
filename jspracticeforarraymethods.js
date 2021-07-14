@@ -46,8 +46,7 @@ console.log('justNameAndHeight');
 console.log(justNameAndHeight);
 
 //4. Get array of all first names
-const justFirstNamesGetter = characters.map((char) => char.name.split(" ")[0]
-);
+const justFirstNamesGetter = characters.map((char) => char.name.split(" ")[0]);
 console.log('justFirstNamesGetter');
 console.log(justFirstNamesGetter);
 
@@ -65,23 +64,17 @@ console.log('greaterThan100');
 console.log(greaterThan100);
 
 //2. Get characters with height less than 200
-const filterHeightLessThan200 = characters.filter(
-(charac) => charac.height < 200
-);
+const filterHeightLessThan200 = characters.filter((charac) => charac.height < 200);
 console.log("filterHeightLessThan200");
 console.log(filterHeightLessThan200);
 
 //3. Get all male characters
-const allMaleCharacters = characters.filter(
-(charac) => charac.gender === "male"
-);
+const allMaleCharacters = characters.filter((charac) => charac.gender === "male");
 console.log("allMaleCharacters");
 console.log(allMaleCharacters);
 
 //4. Get all female characters
-const allFemaleCharacters = characters.filter(
-(charac) => charac.gender ==="female"
-);
+const allFemaleCharacters = characters.filter((charac) => charac.gender ==="female");
 console.log("allFemaleCharacters");
 console.log(allFemaleCharacters);
 
