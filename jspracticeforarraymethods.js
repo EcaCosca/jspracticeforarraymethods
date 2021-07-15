@@ -29,6 +29,14 @@ const characters = [
     },
 ];
 
+
+
+
+
+
+
+
+
 //***MAP***
 //1. Get array of all names
 const allNames = characters.map((char) => char.name);
@@ -41,20 +49,69 @@ console.log('allHeights');
 console.log(allHeights);
 
 //3. Get array of objects with just name and height properties
-const justNameAndHeight = allNames + ' ' + allHeights;
+const justNameAndHeight = characters.map((char) => {
+  return char.name + ' ' + char.height 
+});
 console.log('justNameAndHeight');
 console.log(justNameAndHeight);
 
 //4. Get array of all first names
-const justFirstNamesGetter = characters.map((char) => char.name.split(" ")[0]);
+const justFirstNamesGetter = characters.map((char) => char.name.split(" ")[0]
+);
 console.log('justFirstNamesGetter');
 console.log(justFirstNamesGetter);
 
+
+
+
+
+
+
+
+
+
+
+
 //***REDUCE***
 //1. Get total mass of all characters
+const totalMass = characters.reduce((acc, cur) => acc + cur.mass, 0); 
+console.log('Get total mass of all characters');
+console.log(totalMass);
+
 //2. Get total height of all characters
+const totalHeight = characters.reduce((acc, cur) => acc + cur.height, 0);
+console.log('Get total height of all characters');
+console.log(totalHeight);
+
 //3. Get total number of characters by eye color
+const eyeColorCounter = characters.reduce((acc, cur) => {
+  const color = cur.eye_color;
+  if(acc[color]) {
+    acc[color]++;
+  }else {
+    acc[color] = 1;
+  }
+  return acc;
+}, {})
+console.log('Get total number of characters by eye color');
+console.log(eyeColorCounter);
+
 //4. Get total number of characters in all the character names
+const characterCounterForNames = characters.reduce((acc, cur) => acc + cur.name.length, 0);
+console.log('Get total number of characters in all the character names');
+console.log(characterCounterForNames);
+
+
+
+
+
+
+
+
+
+
+
+
 
 //***FILTER***
 
@@ -64,35 +121,133 @@ console.log('greaterThan100');
 console.log(greaterThan100);
 
 //2. Get characters with height less than 200
-const filterHeightLessThan200 = characters.filter((charac) => charac.height < 200);
+const filterHeightLessThan200 = characters.filter(
+(charac) => charac.height < 200
+);
 console.log("filterHeightLessThan200");
 console.log(filterHeightLessThan200);
 
 //3. Get all male characters
-const allMaleCharacters = characters.filter((charac) => charac.gender === "male");
+const allMaleCharacters = characters.filter(
+(charac) => charac.gender === "male"
+);
 console.log("allMaleCharacters");
 console.log(allMaleCharacters);
 
 //4. Get all female characters
-const allFemaleCharacters = characters.filter((charac) => charac.gender ==="female");
+const allFemaleCharacters = characters.filter(
+(charac) => charac.gender === "female"
+);
 console.log("allFemaleCharacters");
 console.log(allFemaleCharacters);
 
 
+
+
+
+
+
+
+
+
+
+
 //***SORT***
 //1. Sort by mass
+const sortByMass = characters.sort((a, b) => a.mass - b.mass);
+console.log("Sort by mass");
+console.log(sortByMass);
+
 //2. Sort by height
+const sortByHeight = characters.sort((a, b) => a.height - b.height);
+console.log("Sort by height");
+console.log(sortByHeight);
+
 //3. Sort by name
+const sortingNames = characters.sort((a, b) => {
+  if (a.name < b.name) {
+    return -1;
+  }else{
+    return 1;
+  }
+});
+
+console.log('Sort by name')
+console.log(sortingNames);
+
 //4. Sort by gender
+const sortByGender = characters.sort((a, b) => {
+  if (a.gender === 'female') return -1;
+  return 1;
+});
+console.log("sortByGender");
+console.log(sortByGender);
+
+
+
+
+
+
+
+
+
+
+
 
 //***EVERY***
 //1. Does every character have blue eyes?
+const hasBlueEyes = (char) => {
+  return char.eye_color === 'blue'
+}
+console.log('Does every character have blue eyes?');
+console.log(characters.every(hasBlueEyes));
+
 //2. Does every character have mass more than 40?
+const massIsOver40 = (char) => {
+  return char.mass > 40
+}; 
+console.log('Does every character have mass more than 40?');
+console.log(characters.every(massIsOver40));
+
 //3. Is every character shorter than 200?
+const shorterThan200 = (char) => {
+  return char.height < 200
+};
+console.log('Is every character shorter than 200?');
+console.log(characters.every(shorterThan200));
+
 //4. Is every character male?
+const isMale = (char) => {
+  return char.gender === 'male'
+};
+console.log('Is every character male?');
+console.log(characters.every(isMale));
+
+
+
+
+
+
+
+
+
+
 
 //***SOME***
 //1. Is there at least one male character?
+console.log('Is there at least one male character?')
+console.log(characters.some(isMale))
+
 //2. Is there at least one character with blue eyes?
+console.log('Is there at least one character with blue eyes?')
+console.log(characters.some(hasBlueEyes))
+
 //3. Is there at least one character taller than 210?
+const tallerThan210 = (char) => char.height > 210;
+console.log('Is there at least one character taller than 210?')
+console.log(characters.some(tallerThan210))
+
 //4. Is there at least one character that has mass less than 50?
+const massIslessThan50 = (char) => char.mass < 50; 
+console.log('Is there at least one character that has mass less than 50?')
+console.log(characters.some(massIslessThan50))
